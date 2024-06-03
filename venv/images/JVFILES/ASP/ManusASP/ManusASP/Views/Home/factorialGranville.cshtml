@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "factorialGranville";
+}
+
+<h2>Factorial & Granville Number Check</h2>
+Input a positive integer:
+<input type="number" id="number" name="number" min="1" /> <br />
+<input type="button" id="btn" value="Calculate" />
+
+<script src="~/Scripts/jqueryLatest/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#btn").click(function () {
+            var number = parseInt($('#number').val());
+
+            if (!Number.isInteger(number) || number <= 0) {
+                alert("Please enter a positive integer.");
+                return;
+            }
+
+            $.post('../Home/computeOperations', {
+                number: number
+            }, function (data) {
+                if (data[0].mess == 1) {
+                    alert("Factorial: " + data[0].factorial + "\n" + data[0].message);
+                }
+            });
+        });
+    });
+</script>
+

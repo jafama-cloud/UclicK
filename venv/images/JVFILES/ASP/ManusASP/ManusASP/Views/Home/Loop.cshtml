@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Loop";
+}
+
+<h2>Check Number Property</h2>
+Input a positive integer number <input type="number" id="num" name="number" /> <br />
+<input type="button" id="btn" value="Check Property" />
+
+<script src="~/Scripts/jqueryLatest/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#btn").click(function () {
+            var number = parseInt($('#num').val());
+
+            if (number > 0) {
+                $.post('../Home/checkNumberProperty', {
+                    num: number
+                }, function (data) {
+                    if (data[0].mess == 1) {
+                        alert("Length: " + data[0].length + "\nSatisfies the property!");
+                    } else {
+                        alert("Length: " + data[0].length + "\nDoes not satisfy the property.");
+                    }
+                });
+            } else {
+                alert("Please enter a positive integer.");
+            }
+        });
+    });
+</script>
+

@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "Flames";
+}
+
+<h2>FLAMES Game</h2>
+First Person Name: <br />
+<input type="text" id="name1"/><br/>
+
+Second Person Name: <br />
+<input type="text" id="name2"/><br/> <br/>
+
+<input type="button" id="btnCheck" value="Check Relationship" />
+
+<script src="~/Scripts/jqueryLatest/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+    $().ready(function () {
+        $("#btnCheck").click(function () {
+            var name1 = $("#name1").val().toLowerCase().replace(/\s/g, '');
+            var name2 = $("#name2").val().toLowerCase().replace(/\s/g, '');
+
+            // Check if both names are entered
+            if (name1 === "" || name2 === "") {
+                alert("Please enter both names.");
+                return;
+            }
+
+            $.post('../home/computeFlames', {
+                name1: name1,
+                name2: name2
+
+            }, function (data) {
+                
+                if (data.length > 0) {
+                    if (data[0].mess === 1) {
+                        alert("Result: " + data[0].result);
+                    } else {
+                        alert(data[0].result);
+                    }
+                }
+            });
+        });
+    });
+
+</script>
+

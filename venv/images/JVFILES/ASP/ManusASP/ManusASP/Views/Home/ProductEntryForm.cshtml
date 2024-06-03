@@ -1,0 +1,182 @@
+﻿@{
+    ViewBag.Title = "ProductEntryForm";
+}
+
+<style>
+    .form-container {
+        width: 380px;
+        margin: 0 auto;
+        padding: 44px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+
+        .form-container label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-container input[type="text"],
+        .form-container input[type="number"],
+        .form-container select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+
+        .form-container input[type="file"] {
+            margin-bottom: 10px;
+        }
+
+        .form-container input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 3px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+
+            .form-container input[type="submit"]:hover {
+                background-color: #0056b3;
+            }
+
+    /* Styles for the table */
+    .product-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+        .product-table th,
+        .product-table td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .product-table th {
+            background-color: #f0f0f0;
+        }
+</style>
+
+<div class="form-container">
+    <h2><strong>Product Entry Form</strong></h2>
+    <form id="productForm" enctype="multipart/form-data">
+        <label for="productName">Product Name:</label>
+        <input type="text" id="productName" name="productName" required>
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" rows="4" required></textarea>
+
+        <label for="category">Category:</label>
+        <select id="category" name="category" required>
+            <option value="">Select Category</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Clothing">Clothing</option>
+            <option value="Cosmetics">Cosmetics</option>
+            <option value="Books">Books</option>
+            <option value="Home">Home</option>
+        </select>
+
+        <label for="price">Price:</label>
+        <input type="number" id="price" name="price" min="0" step="0.01" required>
+
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" min="0" required>
+
+        <label for="expiryDate">Expiry Date:</label>
+        <input type="date" id="expiryDate" name="expiryDate" required>
+
+        <label for="reorderingPoint">Reordering Point:</label>
+        <input type="number" id="reorderingPoint" name="reorderingPoint" min="0" required>
+
+        <label for="supplier1">Supplier 1:</label>
+        <input type="text" id="supplier1" name="supplier1" required>
+
+        <label for="supplier2">Supplier 2:</label>
+        <input type="text" id="supplier2" name="supplier2" required>
+
+        <label for="supplier3">Supplier 3:</label>
+        <input type="text" id="supplier3" name="supplier3" required>
+
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+<!-- Table for displaying products -->
+<table class="product-table">
+    <thead>
+        <tr>
+            <th>Product Number</th>
+            <th>Product Name</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Expiry Date</th>
+            <th>Reordering Point</th>
+            <th>Supplier 1</th>
+            <th>Supplier 2</th>
+            <th>Supplier 3</th>
+        </tr>
+    </thead>
+    <tbody id="productTableBody">
+        <!-- Product rows will be dynamically added here -->
+    </tbody>
+</table>
+
+<script src="~/Scripts/jqueryLatest/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $("#productForm").submit(function (event) {
+            event.preventDefault();
+            var formData = new FormData($(this)[0]);
+
+            $.ajax({
+                url: '../home/submitProduct',
+                type: 'POST',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (data) {
+                    if (data.success) {
+                        alert("Product submitted successfully!");
+                        $("#productForm")[0].reset();
+                        addProductRow(data.product); // Add the submitted product to the table
+                    } else {
+                        alert("Failed to submit product.");
+                    }
+                }
+            });
+        });
+
+        // Function to add a new row to the product table
+        function addProductRow(product) {
+            var newRow = "<tr>" +
+                "<td>" + product.ProductID + "</td>" +
+                "<td>" + product.ProductName + "</td>" +
+                "<td>" + product.Description + "</td>" +
+                "<td>" + product.Category + "</td>" +
+                "<td>" + product.Price + "</td>" +
+                "<td>" + product.Quantity + "</td>" +
+                "<td>" + product.ExpiryDate + "</td>" +
+                "<td>" + product.ReorderingPoint + "</td>" +
+                "<td>" + product.Supplier1 + "</td>" +
+                "<td>" + product.Supplier2 + "</td>" +
+                "<td>" + product.Supplier3 + "</td>" +
+                "</tr>";
+
+            $("#productTableBody").append(newRow);
+        }
+
+    });
+</script>

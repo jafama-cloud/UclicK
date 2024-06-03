@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Product";
+}
+
+<h2>Computing Product</h2>
+Input first number: <input type="number" id="n1" name="num1" /> <br />
+Input second number <input type="number" id="n2" name="num2" /> <br />
+<input type="button" id="btn" value="Compute" />
+
+<script src="~/Scripts/jqueryLatest/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#btn").click(function () {
+            var num1 = parseInt($('#n1').val());
+            var num2 = parseInt($('#n2').val());
+
+            $.post('../Home/computeProduct', {
+                n1: num1,
+                n2: num2
+            }, function (data) {
+                if (data[0].mess == 1) {
+                    alert(data[0].product);
+                }
+            });
+        });
+    });
+</script>
+
+

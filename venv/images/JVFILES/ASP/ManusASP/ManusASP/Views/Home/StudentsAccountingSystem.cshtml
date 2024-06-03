@@ -1,0 +1,375 @@
+﻿
+@{
+    ViewBag.Title = "StudentsAccountingSystem";
+}
+
+<h2>Students Accounting System</h2>
+<strong>Student Profile</strong> <br />
+Student ID: <input type="text" id="studentId" /> <br /><br/>
+Firstname: <input type="text" id="fname" /> <br /><br/>
+Lastname: <input type="text" id="lname" /> <br /><br/>
+Gender:<br/>
+<input type="radio" id="female" name="gender" value="0" checked> Female <br>
+<input type="radio" id="male" name="gender" value="1" checked> Male <br>
+<input type="radio" id="lgbtq" name="gender" value="2" checked> LGBTQ+ <br>
+Course Code: <input type="text" id="courseCode" /> <br /><br/>
+Year: <input type="text" id="year" /> <br/><br/>
+Subjects (1-10): <input type="text" id="subjects" /> <br/><br/>
+<input type="button" id="btnclck" value="Calculate Fees" />
+<script src="~/Scripts/jqueryLatest/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#btnclck").click(function () {
+            var studentId = $("#studentId").val();
+            var lastname = $("#lname").val();
+            var firstname = $("#fname").val();
+            var gender = $("input[name='gender']:checked").val();
+            var courseCode = $("#courseCode").val();
+            var year = $("#year").val();
+            var subjects = $("#subjects").val();
+
+            if (gender === "0") {
+                gender = "Female";
+            } else if (gender === "1") {
+                gender = "Male";
+            } else if (gender === "2") {
+                gender = "LGBTQ+";
+            } else {
+                gender = "Unknown";
+            }       
+
+            var courseText;
+            var tuitionPerUnit, regFee, miscFee, labFee;
+
+            if (courseCode === "0001") {
+                courseText = "C1";
+                tuitionPerUnit = 356.75;
+                regFee = 545.00;
+                miscFee = 1000.45;
+                labFee = 1900.75;
+            } else if (courseCode === "0002") {
+                courseText = "C2";
+                tuitionPerUnit = 387.75;
+                regFee = 550.00;
+                miscFee = 1050.35;
+                labFee = 1920.20;
+            } else if (courseCode === "0003") {
+                courseText = "C3";
+                tuitionPerUnit = 345.94;
+                regFee = 555.00;
+                miscFee = 1100.25;
+                labFee = 1939.65;
+            } else if (courseCode === "0004") {
+                courseText = "C4";
+                tuitionPerUnit = 351.26;
+                regFee = 560.00;
+                miscFee = 1150.15;
+                labFee = 1959.10;
+            } else if (courseCode === "0005") {
+                courseText = "C5";
+                tuitionPerUnit = 378.44;
+                regFee = 565.00;
+                miscFee = 1200.05;
+                labFee = 1978.55;
+            } else if (courseCode === "0006") {
+                courseText = "C6";
+                tuitionPerUnit = 326.11;
+                regFee = 570.00;
+                miscFee = 1249.05;
+                labFee = 1998.00;
+            } else if (courseCode === "0007") {
+                courseText = "C7";
+                tuitionPerUnit = 310.45;
+                regFee = 610.00;
+                miscFee = 1299.85;
+                labFee = 2017.45;
+            } else if (courseCode === "0008") {
+                courseText = "C8";
+                tuitionPerUnit = 399.79;
+                regFee = 624.00;
+                miscFee = 1349.75;
+                labFee = 2036.90;
+            } else {
+                courseText = "Unknown";
+                tuitionPerUnit = 0.00;
+                regFee = 0.00;
+                miscFee = 0.0;
+                labFee = 0.00;
+            }
+
+            var totalUnits = subjects * 3.0;  // Calculate Total Units
+            var totalTuition = totalUnits * tuitionPerUnit;  // Calculate Total Tuition
+            var totalFees = totalTuition + regFee + miscFee + labFee;  // Calculate Total Fees
+
+            // Calculate Installment Amounts
+            var prelimAmount = totalFees * 0.53;
+            var midtermAmount = (totalFees - prelimAmount) * 0.64;
+            var semiAmount = (totalFees - prelimAmount - midtermAmount) * 0.75;
+            var finalAmount = totalFees - prelimAmount - midtermAmount - semiAmount;
+
+            alert(`RECEIPT
+                    \nStudent ID: ${studentId}
+                    \nFirstname: ${firstname}
+                    \nLastname: ${lastname}
+                    \nGender: ${gender}
+                    \nCourse: ${courseText} 
+                    \nYear: ${year} 
+                    \nSubjects: ${subjects} 
+                    \nTotal Units: ${totalUnits} 
+                    \nTotal Tuition: ${totalTuition.toFixed(2)} 
+                    \nRegistration Fee: ${regFee.toFixed(2)} 
+                    \nMiscellaneous Fee: ${miscFee.toFixed(2)} 
+                    \nLab Fee: ${labFee.toFixed(2)} 
+                    \nTotal Fees: ${totalFees.toFixed(2)} 
+                    \n\nInstallment Amounts:
+                    \nPRELIM - 53% of ${totalFees.toFixed(2)}: Php ${prelimAmount.toFixed(2)}
+                    \nMIDTERM - 64% of (${totalFees.toFixed(2)} - ${prelimAmount.toFixed(2)}): Php ${midtermAmount.toFixed(2)}
+                    \nSEMI - 75% of (${totalFees.toFixed(2)} - ${prelimAmount.toFixed(2)} - ${midtermAmount.toFixed(2)}): Php ${semiAmount.toFixed(2)}
+                    \nFINAL - Remaining: Php ${finalAmount.toFixed(2)}
+            `);
+
+            // Add a separate form for Payment Period and Tendered Amount
+            var paymentForm = `
+                <h2>Payment Details</h2>
+                <form id="paymentForm">
+                    <label for="paymentPeriod">Payment Period:</label><br>
+                    <input type="radio" id="prelim" name="paymentPeriod" value="Prelim">
+                    <label for="prelim">PRELIM - 53%</label><br>
+                    <input type="radio" id="midterm" name="paymentPeriod" value="Midterm">
+                    <label for="midterm">MIDTERM - 64%</label><br>
+                    <input type="radio" id="semi" name="paymentPeriod" value="Semi">
+                    <label for="semi">SEMI - 75%</label><br>
+                    <input type="radio" id="final" name="paymentPeriod" value="Final">
+                    <label for="final">FINAL - FULL PAYMENT</label><br><br>
+                    Tendered Amount: <input type="text" id="tenderedAmount" /> <br/><br/>
+                    <input type="button" id="calculatePayment" value="Calculate Payment" />
+                </form>
+            `;
+
+            // Append the payment form to the body
+            $("body").append(paymentForm);
+
+            // Calculate Amount Due based on Payment Period
+            $("#calculatePayment").click(function () {
+                var selectedPaymentPeriod = $("input[name='paymentPeriod']:checked").val();
+                var amountDue;
+                switch (selectedPaymentPeriod) {
+                    case "Prelim":
+                        amountDue = prelimAmount;
+                        break;
+                    case "Midterm":
+                        amountDue = midtermAmount;
+                        break;
+                    case "Semi":
+                        amountDue = semiAmount;
+                        break;
+                    case "Final":
+                        amountDue = finalAmount;
+                        break;
+                    default:
+                        amountDue = 0;
+                }
+
+                // Determine Payment Mode
+                var paymentMode;
+                if (totalFees >= 8000) {
+                    paymentMode = "CASH";
+                } else if (totalFees >= 5000) {
+                    paymentMode = "CHECK";
+                } else {
+                    paymentMode = "CREDIT";
+                }
+
+                var tenderedAmount = parseFloat($("#tenderedAmount").val());
+                var change = tenderedAmount - amountDue;
+
+                // Function to convert number to words
+                function convertNumberToWords(num) {
+                    var words = "";
+                    var digit, position = 1;
+
+                    while (num > 0) {
+                        digit = num % 10;
+                        num = Math.floor(num / 10);
+
+                        switch (position) {
+                            case 1:
+                                switch (digit) {
+                                    case 1: words = "One " + words; break;
+                                    case 2: words = "Two " + words; break;
+                                    case 3: words = "Three " + words; break;
+                                    case 4: words = "Four " + words; break;
+                                    case 5: words = "Five " + words; break;
+                                    case 6: words = "Six " + words; break;
+                                    case 7: words = "Seven " + words; break;
+                                    case 8: words = "Eight " + words; break;
+                                    case 9: words = "Nine " + words; break;
+                                }
+                                break;
+                            case 10:
+                                switch (digit) {
+                                    case 1:
+                                        switch (num % 10) {
+                                            case 0: words = "Ten " + words; break;
+                                            case 1: words = "Eleven " + words; break;
+                                            case 2: words = "Twelve " + words; break;
+                                            case 3: words = "Thirteen " + words; break;
+                                            case 4: words = "Fourteen " + words; break;
+                                            case 5: words = "Fifteen " + words; break;
+                                            case 6: words = "Sixteen " + words; break;
+                                            case 7: words = "Seventeen " + words; break;
+                                            case 8: words = "Eighteen " + words; break;
+                                            case 9: words = "Nineteen " + words; break;
+                                        }
+                                        num = 0;
+                                        break;
+                                    case 2: words = "Twenty " + words; break;
+                                    case 3: words = "Thirty " + words; break;
+                                    case 4: words = "Forty " + words; break;
+                                    case 5: words = "Fifty " + words; break;
+                                    case 6: words = "Sixty " + words; break;
+                                    case 7: words = "Seventy " + words; break;
+                                    case 8: words = "Eighty " + words; break;
+                                    case 9: words = "Ninety " + words; break;
+                                }
+                                break;
+                            case 100:
+                                switch (digit) {
+                                    case 1: words = "One Hundred " + words; break;
+                                    case 2: words = "Two Hundred " + words; break;
+                                    case 3: words = "Three Hundred " + words; break;
+                                    case 4: words = "Four Hundred " + words; break;
+                                    case 5: words = "Five Hundred " + words; break;
+                                    case 6: words = "Six Hundred " + words; break;
+                                    case 7: words = "Seven Hundred " + words; break;
+                                    case 8: words = "Eight Hundred " + words; break;
+                                    case 9: words = "Nine Hundred " + words; break;
+                                }
+                                break;
+                            case 1000:
+                                switch (digit) {
+                                    case 1: words = "One Thousand " + words; break;
+                                    case 2: words = "Two Thousand " + words; break;
+                                    case 3: words = "Three Thousand " + words; break;
+                                    case 4: words = "Four Thousand " + words; break;
+                                    case 5: words = "Five Thousand " + words; break;
+                                    case 6: words = "Six Thousand " + words; break;
+                                    case 7: words = "Seven Thousand " + words; break;
+                                    case 8: words = "Eight Thousand " + words; break;
+                                    case 9: words = "Nine Thousand " + words; break;
+                                }
+                                break;
+                        }
+
+                        position *= 10;
+                    }
+
+                    return words;
+                }
+
+                function convertDecimalToWords(num) {
+                    num = Math.round(num * 100); // Convert to integer for easier processing
+
+                    var decimalPart = num % 100;
+                    var words = "";
+
+                    if (decimalPart > 0) {
+                        words = "and ";
+
+                        if (decimalPart >= 10 && decimalPart < 20) {
+                            switch (decimalPart) {
+                                case 10: words += "Ten "; break;
+                                case 11: words += "Eleven "; break;
+                                case 12: words += "Twelve "; break;
+                                case 13: words += "Thirteen "; break;
+                                case 14: words += "Fourteen "; break;
+                                case 15: words += "Fifteen "; break;
+                                case 16: words += "Sixteen "; break;
+                                case 17: words += "Seventeen "; break;
+                                case 18: words += "Eighteen "; break;
+                                case 19: words += "Nineteen "; break;
+                            }
+                        } else {
+                            var tens = Math.floor(decimalPart / 10);
+                            var ones = decimalPart % 10;
+
+                            switch (tens) {
+                                case 2: words += "Twenty "; break;
+                                case 3: words += "Thirty "; break;
+                                case 4: words += "Forty "; break;
+                                case 5: words += "Fifty "; break;
+                                case 6: words += "Sixty "; break;
+                                case 7: words += "Seventy "; break;
+                                case 8: words += "Eighty "; break;
+                                case 9: words += "Ninety "; break;
+                            }
+
+                            switch (ones) {
+                                case 1: words += "One "; break;
+                                case 2: words += "Two "; break;
+                                case 3: words += "Three "; break;
+                                case 4: words += "Four "; break;
+                                case 5: words += "Five "; break;
+                                case 6: words += "Six "; break;
+                                case 7: words += "Seven "; break;
+                                case 8: words += "Eight "; break;
+                                case 9: words += "Nine "; break;
+                            }
+                        }
+                        words += "Cents";
+                    }
+                    return words;
+                }
+
+                var amountDueInWords = convertNumberToWords(Math.floor(amountDue)) + "Pesos " + convertDecimalToWords(amountDue);
+                
+                alert(`Payment Details:
+                        \nPayment Period: ${selectedPaymentPeriod}
+                        \nPayment Mode: ${paymentMode}
+                        \nAmount Due: Php ${amountDue.toFixed(2)}
+                        \nTendered Amount: Php ${tenderedAmount.toFixed(2)}
+                        \nChange: Php ${change.toFixed(2)}
+                        \n${amountDueInWords}`);
+            });
+
+            $.post('../Home/StudentEntry', {
+                studentId: studentId,
+                firstname: firstname,
+                lastname: lastname,
+                gender: gender,
+                courseCode: courseCode,
+                year: year,
+                subjects: subjects,
+                courseText: courseText,
+                totalUnits: totalUnits,
+                tuitionPerUnit: tuitionPerUnit,
+                totalTuition: totalTuition,
+                regFee: regFee,
+                miscFee: miscFee,
+                labFee: labFee,
+                totalFees: totalFees,
+                prelimAmount: prelimAmount,
+                midtermAmount: midtermAmount,
+                semiAmount: semiAmount,
+                finalAmount: finalAmount,
+                paymentMode: paymentMode,
+                selectedPaymentPeriod: selectedPaymentPeriod,
+                amountDue: amountDue,
+                tenderedAmount: tenderedAmount,
+                change: change,
+                num: num,
+                words: words,
+                digit: digit,
+                position: position,
+                amountDueInWords: amountDueInWords
+            }, function (data) {
+                if (data[0].mess == 1)
+                    alert("Successfully saved!")
+                else
+                    alert("Something missing!")
+            });
+        });
+    });
+</script>
+
+

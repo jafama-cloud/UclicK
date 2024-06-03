@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.34601.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManusASP", "ManusASP\ManusASP.csproj", "{EE1DD816-8D15-42AA-803C-448911BCAE23}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EE1DD816-8D15-42AA-803C-448911BCAE23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE1DD816-8D15-42AA-803C-448911BCAE23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE1DD816-8D15-42AA-803C-448911BCAE23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE1DD816-8D15-42AA-803C-448911BCAE23}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {248A6378-112D-42F8-AB6C-41168F6DE551}
+	EndGlobalSection
+EndGlobal

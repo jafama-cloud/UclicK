@@ -1,0 +1,138 @@
+﻿@{
+    ViewBag.Title = "ParkingLotCharge";
+}
+
+<h2>Parking Lot Charge</h2>
+Type of vehicle: <br/>
+<input type="radio" id="car" name="vehicleType" value="C" checked/> Car <br/>
+<input type="radio" id="bus" name="vehicleType" value="B" checked/> Bus <br/>
+<input type="radio" id="truck" name="vehicleType" value="T" checked/> Truck <br/>
+Hour vehicle entered lot: <input type="number" id="enterHour" name="enterHour"/> <br/>
+Minute vehicle entered lot: <input type="number" id="enterMinute" name="enterMinute"/> <br/>
+Hour vehicle left lot: <input type="number" id="leaveHour" name="leaveHour"/> <br/>
+Minute vehicle left lot: <input type="number" id="leaveMinute" name="leaveMinute"/> <br/> <br/>
+
+<input type="button" id="calculate" value="Calculate"/>
+
+<script src="~/Scripts/jqueryLatest/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#calculate").click(function() {
+            var vehicleType = $("input[name='vehicleType']:checked").val();
+            var enterHour = parseInt($("#enterHour").val());
+            var enterMinute = parseInt($("#enterMinute").val());
+            var leaveHour = parseInt($("#leaveHour").val());
+            var leaveMinute = parseInt($("#leaveMinute").val());
+
+            // Check for valid input
+            if (!Number.isInteger(enterHour) || !Number.isInteger(enterMinute) || !Number.isInteger(leaveHour) || !Number.isInteger(leaveMinute)
+                || enterHour < 0 || enterHour > 23 || enterMinute < 0 || enterMinute > 59
+                || leaveHour < 0 || leaveHour > 23 || leaveMinute < 0 || leaveMinute > 59) {
+                alert("Please enter valid numbers for hours (0-24) and minutes (0-60).");
+                return;
+            }
+
+            // Calculate total minutes parked
+            var totalMinutes = (leaveHour - enterHour) * 60 + (leaveMinute - enterMinute);
+            if (totalMinutes < 0) {
+                totalMinutes += 24 * 60;  // Handle negative time by adding a day
+            }
+
+            // Check if vehicle stays past midnight
+            if (leaveHour < enterHour || (leaveHour === enterHour && leaveMinute < enterMinute)) {
+                alert("Vehicle cannot stay past midnight. It will be towed away.");
+                return;
+            }
+
+            // Calculate hours and minutes parked
+            var parkingHours = parseInt(totalMinutes / 60);
+            var parkingMinutes = totalMinutes % 60;
+
+            // Calculate rounded hours
+            var roundedHours;
+            if (parkingMinutes >= 1) {
+                roundedHours = parkingHours + 1;
+            } else {
+                roundedHours = parkingHours;
+            }
+
+            // Calculate charge based on vehicle type
+            var charge = 0;
+            if (vehicleType === "C") {
+                vehicleType = "Car"
+                if (parkingHours <= 3) {
+                    charge = 0;
+                } else {
+                    charge = 3 * 0 + (parkingHours - 3) * 1.50;
+                }
+            } else if (vehicleType === "T") {
+                vehicleType = "Truck"
+                if (parkingHours <= 2) {
+                    charge = 2 * 1.00;
+                } else {
+                    charge = 2 * 1.00 + (parkingHours - 2) * 2.30;
+                }
+            } else if (vehicleType === "B") {
+                vehicleType = "Bus"
+                if (parkingHours <= 1) {
+                    charge = 1 * 2.00;
+                } else {
+                    charge = 1 * 2.00 + (parkingHours - 1) * 3.70;
+                }
+            } else {
+                alert("Please select vehicle type.");
+                return;
+            }
+
+            // Display result
+            var timeIn;
+            if (enterMinute < 10) {
+                timeIn = `${enterHour}:0${enterMinute}`;
+            } else {
+                timeIn = `${enterHour}:${enterMinute}`;
+            }
+
+            var timeOut;
+            if (leaveMinute < 10) {
+                timeOut = `${leaveHour}:0${leaveMinute}`;
+            } else {
+                timeOut = `${leaveHour}:${leaveMinute}`;
+            }
+
+            var parkingTime;
+            if (parkingMinutes < 10) {
+                parkingTime = `${parkingHours}:0${parkingMinutes}`;
+            } else {
+                parkingTime = `${parkingHours}:${parkingMinutes}`;
+            }
+
+            alert(`PARKING LOT CHARGE
+                    \nType of vehicle: ${vehicleType}
+                    \nTIME-IN: ${timeIn}
+                    \nTIME-OUT: ${timeOut}
+                    \nPARKING TIME: ${parkingTime}
+                    \nROUNDED TOTAL: ${roundedHours} hours
+                    \nTOTAL CHARGE: Php${charge.toFixed(2)}`);
+
+            $.post('..Home/ParkingFee', {
+                vehicleType: vehicleType,
+                enterHour: enterHour,
+                enterMinute: enterMinute,
+                leaveHour: leaveHour,
+                leaveMinute: leaveMinute,
+                timeIn: timeIn,
+                timeOut: timeOut,
+                parkingTime: parkingTime,
+                roundedHours: roundedHours,
+                charge: charge.toFixed(2)
+            }, function (data) {
+                if (data[0].mess == 1)
+                    alert("Successfully saved!")
+                else
+                    alert("Something missing!")
+            });
+        });
+    });
+</script>
+
+

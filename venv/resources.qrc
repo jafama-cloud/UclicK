@@ -1,0 +1,80 @@
+<RCC>
+  <qresource prefix="newPrefix">
+    <file>images/guestBooking-calendar.png</file>
+    <file>images/client-info.png</file>
+    <file>images/Pending -  30.png</file>
+    <file>images/client.png</file>
+    <file>images/notes.png</file>
+    <file>images/timetable.png</file>
+    <file>images/kid3d.png</file>
+    <file>images/pet3d.png</file>
+    <file>images/man3d.png</file>
+    <file>images/print3d.png</file>
+    <file>images/photo3d.png</file>
+    <file>images/photoshop3d.png</file>
+    <file>images/request.png</file>
+    <file>images/arrownext.png</file>
+    <file>images/booknow.png</file>
+    <file>images/skip.png</file>
+    <file>images/backarrow.png</file>
+    <file>images/nextarrow.png</file>
+    <file>images/icons8-delete-60.png</file>
+    <file>images/click.png</file>
+    <file>images/save.png</file>
+    <file>images/save.png</file>
+    <file>images/edit.png</file>
+    <file>images/history.png</file>
+    <file>images/view.png</file>
+    <file>images/undo.png</file>
+    <file>images/no-show.png</file>
+    <file>images/resched.png</file>
+    <file>images/cancel.png</file>
+    <file>images/confim.png</file>
+    <file>images/clear-form.png</file>
+    <file>images/gen-bill.png</file>
+    <file>images/del-bill.png</file>
+    <file>images/dl-bill.png</file>
+    <file>images/send.png</file>
+    <file>images/Email - 50.png</file>
+    <file>images/no-show.png</file>
+    <file>images/resched.png</file>
+    <file>images/Completed - 30.png</file>
+    <file>images/Logo.png</file>
+    <file>images/Phone - 50.png</file>
+    <file>images/book-desc.png</file>
+    <file>images/book-desc.jpg</file>
+    <file>images/logo-header.jpg</file>
+    <file>images/booknow.png</file>
+    <file>images/vertical-line.png</file>
+    <file>images/circle.png</file>
+    <file>images/done.png</file>
+    <file>images/reqsent.png</file>
+    <file>images/location.png</file>
+    <file>images/uclickC.jpg</file>
+    <file>images/uclickP.jpg</file>
+    <file>images/adashboard.png</file>
+    <file>images/bills.png</file>
+    <file>images/clientsdashboard.png</file>
+    <file>images/check.png</file>
+    <file>images/logout.png</file>
+    <file>images/search.png</file>
+    <file>images/admin.png</file>
+    <file>images/billing.png</file>
+    <file>images/check.png</file>
+    <file>images/billing-white.png</file>
+    <file>images/calendar.png</file>
+    <file>images/calendar-white.png</file>
+    <file>images/dashboard.png</file>
+    <file>images/dashboard-white.png</file>
+    <file>images/customers.png</file>
+    <file>images/customers-white.png</file>
+    <file>images/guest.png</file>
+    <file>images/logo.jpg</file>
+    <file>images/logout.png</file>
+    <file>images/key.png</file>
+    <file>images/logout-white.png</file>
+    <file>images/showpw.png</file>
+    <file>images/uclick.jpg</file>
+    <file>images/username.png</file>
+  </qresource>
+</RCC>
