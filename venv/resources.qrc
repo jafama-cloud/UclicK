@@ -1,5 +1,12 @@
 <RCC>
   <qresource prefix="newPrefix">
+    <file>images/switch_tables.png</file>
+    <file>images/archive.png</file>
+    <file>images/restore.png</file>
+    <file>images/view_app.png</file>
+    <file>images/set_app.png</file>
+    <file>images/backButton.png</file>
+    <file>images/displaypic.png</file>
     <file>images/guestBooking-calendar.png</file>
     <file>images/client-info.png</file>
     <file>images/Pending -  30.png</file>

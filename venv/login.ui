@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>802</width>
-    <height>600</height>
+    <width>900</width>
+    <height>650</height>
    </rect>
   </property>
   <property name="font">
@@ -19,7 +19,8 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(234, 234, 234);</string>
+   <string notr="true">background-color: rgb(234, 234, 234);
+</string>
   </property>
   <property name="iconSize">
    <size>
@@ -39,19 +40,24 @@
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>401</width>
-      <height>581</height>
+      <width>450</width>
+      <height>631</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(43, 138, 158);
-border-radius: 40px;</string>
+border-radius: 42px;</string>
     </property>
     <widget class="QLabel" name="logo">
      <property name="geometry">
       <rect>
-       <x>118</x>
-       <y>30</y>
+       <x>150</x>
+       <y>20</y>
        <width>150</width>
        <height>64</height>
       </rect>
@@ -78,234 +84,80 @@ border-radius: 40px;</string>
       <bool>true</bool>
      </property>
     </widget>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>310</y>
+       <width>450</width>
+       <height>321</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Sunken</enum>
+     </property>
+     <property name="lineWidth">
+      <number>12</number>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="resources.qrc">:/newPrefix/images/displaypic.png</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
     <widget class="QLabel" name="systitle">
      <property name="geometry">
       <rect>
-       <x>-27</x>
-       <y>100</y>
-       <width>441</width>
-       <height>261</height>
+       <x>64</x>
+       <y>110</y>
+       <width>321</width>
+       <height>181</height>
       </rect>
      </property>
      <property name="font">
       <font>
        <family>Franklin Gothic Heavy</family>
-       <pointsize>42</pointsize>
+       <pointsize>40</pointsize>
        <weight>50</weight>
        <italic>false</italic>
        <bold>false</bold>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">font: 42pt &quot;Franklin Gothic Heavy&quot;;
+      <string notr="true">font: 40pt &quot;Franklin Gothic Heavy&quot;;
 color: #FFFFFF;</string>
      </property>
      <property name="text">
       <string>Studio
- Management 
+Management 
 System</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QLabel" name="chooserole">
-     <property name="geometry">
-      <rect>
-       <x>131</x>
-       <y>387</y>
-       <width>141</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Franklin Gothic Book</family>
-       <pointsize>14</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>Choose Your Role</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-    <widget class="QFrame" name="frame">
-     <property name="geometry">
-      <rect>
-       <x>220</x>
-       <y>420</y>
-       <width>131</width>
-       <height>131</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true"> QFrame {
-                background-color: rgb(217, 217, 217);
-                border-radius: 33px;
-                border: 4px  solid silver;
-;
-            }</string>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
-     </property>
-     <widget class="QToolButton" name="guest">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>17</y>
-        <width>115</width>
-        <height>111</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Franklin Gothic Demi</family>
-        <pointsize>14</pointsize>
-       </font>
-      </property>
-      <property name="layoutDirection">
-       <enum>Qt::LeftToRight</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(217, 217, 217);
-border-radius: 33px;</string>
-      </property>
-      <property name="text">
-       <string>Guest</string>
-      </property>
-      <property name="icon">
-       <iconset resource="resources.qrc">
-        <normaloff>:/newPrefix/images/guest.png</normaloff>:/newPrefix/images/guest.png</iconset>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>300</width>
-        <height>300</height>
-       </size>
-      </property>
-      <property name="checkable">
-       <bool>true</bool>
-      </property>
-      <property name="toolButtonStyle">
-       <enum>Qt::ToolButtonTextUnderIcon</enum>
-      </property>
-      <property name="autoRaise">
-       <bool>false</bool>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QFrame" name="frame_2">
-     <property name="geometry">
-      <rect>
-       <x>50</x>
-       <y>420</y>
-       <width>131</width>
-       <height>131</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true"> QFrame {
-                background-color: rgb(217, 217, 217);
-                border-radius: 33px;
-                border: 4px  solid silver;
-;
-            }</string>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
-     </property>
-     <widget class="QToolButton" name="admin">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>17</y>
-        <width>115</width>
-        <height>111</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Franklin Gothic Demi</family>
-        <pointsize>14</pointsize>
-       </font>
-      </property>
-      <property name="layoutDirection">
-       <enum>Qt::LeftToRight</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(217, 217, 217);
-border-radius: 33px;</string>
-      </property>
-      <property name="text">
-       <string>Admin</string>
-      </property>
-      <property name="icon">
-       <iconset resource="resources.qrc">
-        <normaloff>:/newPrefix/images/admin.png</normaloff>:/newPrefix/images/admin.png</iconset>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>300</width>
-        <height>300</height>
-       </size>
-      </property>
-      <property name="checkable">
-       <bool>true</bool>
-      </property>
-      <property name="toolButtonStyle">
-       <enum>Qt::ToolButtonTextUnderIcon</enum>
-      </property>
-      <property name="autoRaise">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QLabel" name="logintogetstarted_4">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>24</width>
-        <height>24</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Franklin Gothic Medium</family>
-        <pointsize>16</pointsize>
-        <weight>50</weight>
-        <bold>false</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border: 0px;
-border-radius: 10px;</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="resources.qrc">:/newPrefix/images/check.png</pixmap>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-      </property>
-     </widget>
-    </widget>
+    <zorder>systitle</zorder>
+    <zorder>logo</zorder>
+    <zorder>label</zorder>
    </widget>
    <widget class="QLabel" name="descript1">
     <property name="geometry">
      <rect>
-      <x>427</x>
-      <y>70</y>
+      <x>491</x>
+      <y>150</y>
       <width>381</width>
       <height>61</height>
      </rect>
@@ -326,12 +178,15 @@ color: #2B8A9E;</string>
     <property name="text">
      <string>Empower the Studio</string>
     </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
    </widget>
    <widget class="QLabel" name="descript2">
     <property name="geometry">
      <rect>
-      <x>501</x>
-      <y>130</y>
+      <x>560</x>
+      <y>210</y>
       <width>251</width>
       <height>61</height>
      </rect>
@@ -341,14 +196,17 @@ color: #2B8A9E;</string>
 color: #2B8A9E;</string>
     </property>
     <property name="text">
-     <string>Experience!</string>
+     <string>Experience.</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
    <widget class="QLabel" name="logintogetstarted">
     <property name="geometry">
      <rect>
-      <x>432</x>
-      <y>229</y>
+      <x>493</x>
+      <y>306</y>
       <width>191</width>
       <height>31</height>
      </rect>
@@ -368,15 +226,15 @@ color: #2B8A9E;</string>
      <string> Login to get started.</string>
     </property>
     <property name="alignment">
-     <set>Qt::AlignCenter</set>
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
     </property>
    </widget>
    <widget class="QLineEdit" name="username">
     <property name="geometry">
      <rect>
-      <x>490</x>
-      <y>279</y>
-      <width>282</width>
+      <x>548</x>
+      <y>355</y>
+      <width>313</width>
       <height>41</height>
      </rect>
     </property>
@@ -408,8 +266,8 @@ color: rgb(30, 30, 30);
    <widget class="QLabel" name="usernameicon">
     <property name="geometry">
      <rect>
-      <x>442</x>
-      <y>279</y>
+      <x>500</x>
+      <y>354</y>
       <width>51</width>
       <height>41</height>
      </rect>
@@ -448,9 +306,9 @@ color: rgb(30, 30, 30);
    <widget class="QLineEdit" name="password">
     <property name="geometry">
      <rect>
-      <x>490</x>
-      <y>360</y>
-      <width>282</width>
+      <x>548</x>
+      <y>434</y>
+      <width>313</width>
       <height>41</height>
      </rect>
     </property>
@@ -482,8 +340,8 @@ color: rgb(30, 30, 30);
    <widget class="QLabel" name="label_12">
     <property name="geometry">
      <rect>
-      <x>442</x>
-      <y>360</y>
+      <x>500</x>
+      <y>434</y>
       <width>51</width>
       <height>41</height>
      </rect>
@@ -516,9 +374,9 @@ color: rgb(30, 30, 30);
    <widget class="QPushButton" name="login">
     <property name="geometry">
      <rect>
-      <x>437</x>
-      <y>470</y>
-      <width>340</width>
+      <x>493</x>
+      <y>550</y>
+      <width>375</width>
       <height>50</height>
      </rect>
     </property>
@@ -554,8 +412,8 @@ QPushButton:hover {
    <widget class="QPushButton" name="showpw">
     <property name="geometry">
      <rect>
-      <x>740</x>
-      <y>370</y>
+      <x>824</x>
+      <y>444</y>
       <width>31</width>
       <height>23</height>
      </rect>
@@ -585,8 +443,8 @@ QPushButton:hover {
    <widget class="QLabel" name="error">
     <property name="geometry">
      <rect>
-      <x>443</x>
-      <y>412</y>
+      <x>500</x>
+      <y>485</y>
       <width>191</width>
       <height>31</height>
      </rect>
@@ -613,9 +471,9 @@ QPushButton:hover {
    <widget class="QFrame" name="frame_3">
     <property name="geometry">
      <rect>
-      <x>437</x>
-      <y>275</y>
-      <width>340</width>
+      <x>493</x>
+      <y>350</y>
+      <width>375</width>
       <height>50</height>
      </rect>
     </property>
@@ -637,9 +495,9 @@ QPushButton:hover {
    <widget class="QFrame" name="frame_4">
     <property name="geometry">
      <rect>
-      <x>437</x>
-      <y>356</y>
-      <width>340</width>
+      <x>493</x>
+      <y>430</y>
+      <width>375</width>
       <height>50</height>
      </rect>
     </property>
@@ -661,8 +519,8 @@ QPushButton:hover {
    <widget class="QPushButton" name="forgotpw">
     <property name="geometry">
      <rect>
-      <x>654</x>
-      <y>410</y>
+      <x>747</x>
+      <y>483</y>
       <width>122</width>
       <height>31</height>
      </rect>
@@ -687,7 +545,103 @@ background-color: rgb(234, 234, 234);</string>
      <bool>true</bool>
     </property>
    </widget>
+   <widget class="QWidget" name="widget_2" native="true">
+    <property name="geometry">
+     <rect>
+      <x>640</x>
+      <y>20</y>
+      <width>85</width>
+      <height>83</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: silver;
+border-radius: 40px;
+border: 6px  solid  rgb(43, 138, 158);</string>
+    </property>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>18</x>
+       <y>15</y>
+       <width>50</width>
+       <height>50</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: opx  solid silver;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="resources.qrc">:/newPrefix/images/admin.png</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QPushButton" name="helloadmin">
+    <property name="geometry">
+     <rect>
+      <x>624</x>
+      <y>106</y>
+      <width>122</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Franklin Gothic Medium</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: black;
+background-color: rgb(234, 234, 234);</string>
+    </property>
+    <property name="text">
+     <string>Hello, Admin!</string>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QWidget" name="widget_3" native="true">
+    <property name="geometry">
+     <rect>
+      <x>468</x>
+      <y>50</y>
+      <width>424</width>
+      <height>583</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:silver;
+border-radius: 42px;</string>
+    </property>
+    <widget class="QWidget" name="widget_4" native="true">
+     <property name="geometry">
+      <rect>
+       <x>7</x>
+       <y>20</y>
+       <width>410</width>
+       <height>559</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(234, 234, 234);
+border-radius: 42px;</string>
+     </property>
+    </widget>
+   </widget>
+   <zorder>widget_3</zorder>
    <zorder>frame_4</zorder>
+   <zorder>password</zorder>
    <zorder>frame_3</zorder>
    <zorder>widget</zorder>
    <zorder>descript1</zorder>
@@ -695,12 +649,13 @@ background-color: rgb(234, 234, 234);</string>
    <zorder>logintogetstarted</zorder>
    <zorder>username</zorder>
    <zorder>usernameicon</zorder>
-   <zorder>password</zorder>
    <zorder>label_12</zorder>
    <zorder>login</zorder>
    <zorder>showpw</zorder>
    <zorder>error</zorder>
    <zorder>forgotpw</zorder>
+   <zorder>widget_2</zorder>
+   <zorder>helloadmin</zorder>
   </widget>
  </widget>
  <resources>
