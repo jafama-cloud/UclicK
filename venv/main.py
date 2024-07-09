@@ -625,6 +625,7 @@ class Dashboard(QMainWindow):
             # Update the labels after successfully inserting the appointment
             self.update_pending_labels()
             self.display_total_appointments()
+            self.display_total_clients()
             self.stackedWidget.setCurrentIndex(3)  
 
         except psycopg2.Error as e:
@@ -674,6 +675,7 @@ class Dashboard(QMainWindow):
                f"Your appointment has been scheduled as follows:\n" \
                f"Date: {date}\n" \
                f"Time: {time_slot}\n" \
+               f"Address: 2F City Time Square Mactan, Basak, Lapu-Lapu City, Philippines\n" \
                f"Package: {package}\n" \
                f"Notes: {notes}\n\n" \
                f"Thank you,\n" \
@@ -1416,7 +1418,7 @@ class Dashboard(QMainWindow):
                 QMessageBox.warning(self, "Delete Appointment", "Deletion canceled.")
         else:
             QMessageBox.warning(self, "Delete Appointment", "Select a row in the appointment table to delete.")
-
+    
     def send_email_for_appointment(self):
         # Check if a row is selected
         selected_row = self.appTable.currentRow()
@@ -1436,7 +1438,7 @@ class Dashboard(QMainWindow):
         if not client_email:
             QMessageBox.warning(self, "Send Email", "Client's email not found.")
             return
-        
+
         # Get reasons from QTextEdits
         if status == "Rescheduled":
             if package == "Classic":
@@ -1489,6 +1491,17 @@ Your appointment for {package} on {date} at {time} has been completed.
 Location: {address}
 
 We hope to see you again soon!
+
+Regards,
+Uclick Self-Portrait Studio"""
+        elif status == "Pending":
+            subject = "Appointment Confirmed"
+            body = f"""Dear Customer,
+
+Your appointment for {package} on {date} at {time} is confirmed.
+Location: {address}
+
+We look forward to seeing you!
 
 Regards,
 Uclick Self-Portrait Studio"""
@@ -1705,8 +1718,8 @@ Uclick Self-Portrait Studio"""
             # Set data into line edits
             self.client_editinfo_fname.setText(client_fname)
             self.client_editinfo_lname.setText(client_lname)
-            self.client_editinfo_email.setText(client_email)
-            self.client_editinfo_contact.setText(client_contact)
+            self.client_email.setText(client_email)
+            self.client_contact.setText(client_contact)
 
             # Store client_code for later use in save_changes
             self.current_editing_client_code = client_code  # Store client_code attribute in the instance
@@ -1737,14 +1750,14 @@ Uclick Self-Portrait Studio"""
                 # Retrieve data from line edits
                 edited_fname = self.client_editinfo_fname.text()
                 edited_lname = self.client_editinfo_lname.text()
-                edited_email = self.client_editinfo_email.text()
-                edited_contact = self.client_editinfo_contact.text()
+                email = self.client_email.text()
+                contact = self.client_contact.text()
 
                 # Update the selected row in the client list table
                 self.client_list.item(selected_row, 1).setText(edited_fname)
                 self.client_list.item(selected_row, 2).setText(edited_lname)
-                self.client_list.item(selected_row, 3).setText(edited_email)
-                self.client_list.item(selected_row, 4).setText(edited_contact)
+                self.client_list.item(selected_row, 3).setText(email)
+                self.client_list.item(selected_row, 4).setText(contact)
 
                 # Update the client table in the database
                 conn = None
@@ -1753,7 +1766,7 @@ Uclick Self-Portrait Studio"""
                     cur = conn.cursor()
 
                     cur.execute("UPDATE CLIENT SET client_fname = %s, client_lname = %s, client_email = %s, client_contact_number = %s WHERE client_code = %s",
-                                (edited_fname, edited_lname, edited_email, edited_contact, client_code))
+                                (edited_fname, edited_lname, email, contact, client_code))
                     conn.commit()
                     QMessageBox.information(self, "Success", "Changes saved successfully.")
                     self.show_clients()
@@ -2408,7 +2421,7 @@ Uclick Self-Portrait Studio"""
 
                         self.bill_list.removeRow(selected_row)
                         QMessageBox.information(self, "Delete Bill", "Bill deleted successfully.")
-
+                        self.display_total_bills()
                     else:
                         QMessageBox.warning(self, "Delete Bill", "Selected row does not contain bill information.")
 

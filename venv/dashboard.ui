@@ -297,7 +297,7 @@ font: 12pt &quot;Franklin Gothic Heavy&quot;;
      </rect>
     </property>
     <property name="currentIndex">
-     <number>16</number>
+     <number>18</number>
     </property>
     <widget class="QWidget" name="dashboardpg">
      <widget class="QWidget" name="booking_status_widget" native="true">
@@ -9394,6 +9394,9 @@ QPushButton:hover {
         </property>
        </widget>
        <widget class="QLineEdit" name="client_editinfo_email">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="geometry">
          <rect>
           <x>190</x>
@@ -9450,6 +9453,9 @@ font: 12pt &quot;Franklin Gothic Demi&quot;;
         </property>
        </widget>
        <widget class="QLineEdit" name="client_editinfo_contact">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="geometry">
          <rect>
           <x>190</x>
@@ -9628,6 +9634,36 @@ border-bottom: 1px solid black;</string>
         </property>
         <property name="scaledContents">
          <bool>true</bool>
+        </property>
+       </widget>
+       <widget class="QLabel" name="client_email">
+        <property name="geometry">
+         <rect>
+          <x>190</x>
+          <y>386</y>
+          <width>350</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Franklin Gothic Demi</family>
+          <pointsize>12</pointsize>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(30, 30, 30);
+font: 12pt &quot;Franklin Gothic Demi&quot;;
+</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
         </property>
        </widget>
       </widget>
@@ -32665,9 +32701,40 @@ font: 20pt &quot;Franklin Gothic Demi&quot;;</string>
        </property>
       </widget>
      </widget>
+     <widget class="QLabel" name="client_contact">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>476</y>
+        <width>350</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Franklin Gothic Demi</family>
+        <pointsize>12</pointsize>
+        <weight>50</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(30, 30, 30);
+font: 12pt &quot;Franklin Gothic Demi&quot;;
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+     </widget>
      <zorder>Client_Info_Label</zorder>
      <zorder>stackedWidget_9</zorder>
      <zorder>frame_15</zorder>
+     <zorder>client_contact</zorder>
     </widget>
     <widget class="QWidget" name="view_client_info_pg">
      <widget class="QTextEdit" name="Petite_Label_83">
@@ -34954,7 +35021,10 @@ font: 20pt &quot;Franklin Gothic Demi&quot;;</string>
        <string>Contact Number</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="archived_client_info_email">
+     <widget class="QLineEdit" name="asdsdfsf">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>190</x>
@@ -34996,7 +35066,10 @@ font: 12pt &quot;Franklin Gothic Demi&quot;;
        <string>Email Address</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="archived_client_info_fname">
+     <widget class="QLineEdit" name="dfgdfg">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>190</x>
@@ -35015,7 +35088,10 @@ border-bottom: 1px solid black;</string>
        <string/>
       </property>
      </widget>
-     <widget class="QLineEdit" name="archived_client_info_lname">
+     <widget class="QLineEdit" name="fghfhg">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>190</x>
@@ -35035,7 +35111,10 @@ font: 12pt &quot;Franklin Gothic Demi&quot;;
        <string/>
       </property>
      </widget>
-     <widget class="QLineEdit" name="archived_client_info_contact">
+     <widget class="QLineEdit" name="dfsfd">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>190</x>
@@ -35055,6 +35134,126 @@ font: 12pt &quot;Franklin Gothic Demi&quot;;
        <string/>
       </property>
      </widget>
+     <widget class="QLabel" name="archived_client_info_fname">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>206</y>
+        <width>350</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Franklin Gothic Demi</family>
+        <pointsize>12</pointsize>
+        <weight>50</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(30, 30, 30);
+font: 12pt &quot;Franklin Gothic Demi&quot;;
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="archived_client_info_lname">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>296</y>
+        <width>350</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Franklin Gothic Demi</family>
+        <pointsize>12</pointsize>
+        <weight>50</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(30, 30, 30);
+font: 12pt &quot;Franklin Gothic Demi&quot;;
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="archived_client_info_email">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>386</y>
+        <width>350</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Franklin Gothic Demi</family>
+        <pointsize>12</pointsize>
+        <weight>50</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(30, 30, 30);
+font: 12pt &quot;Franklin Gothic Demi&quot;;
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="archived_client_info_contact">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>476</y>
+        <width>350</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Franklin Gothic Demi</family>
+        <pointsize>12</pointsize>
+        <weight>50</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(30, 30, 30);
+font: 12pt &quot;Franklin Gothic Demi&quot;;
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+     </widget>
      <zorder>Petite_Label_85</zorder>
      <zorder>Bg_85</zorder>
      <zorder>archived_clientinfo_backButton</zorder>
@@ -35069,10 +35268,14 @@ font: 12pt &quot;Franklin Gothic Demi&quot;;
      <zorder>LName_Label_4</zorder>
      <zorder>FName_Label_4</zorder>
      <zorder>Phone_Label_4</zorder>
-     <zorder>archived_client_info_email</zorder>
+     <zorder>asdsdfsf</zorder>
      <zorder>Email_Label_4</zorder>
+     <zorder>dfgdfg</zorder>
+     <zorder>fghfhg</zorder>
+     <zorder>dfsfd</zorder>
      <zorder>archived_client_info_fname</zorder>
      <zorder>archived_client_info_lname</zorder>
+     <zorder>archived_client_info_email</zorder>
      <zorder>archived_client_info_contact</zorder>
     </widget>
     <widget class="QWidget" name="page_4">
